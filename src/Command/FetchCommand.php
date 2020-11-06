@@ -11,9 +11,17 @@ use Cake\Http\Client;
 
 /**
  * Fetch command.
+ *
+ * @property \Cake\ORM\Table $Pages
  */
 class FetchCommand extends Command
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $this->loadModel('Pages');
+    }
+
     /**
      * Hook method for defining this command's option parser.
      *
@@ -50,5 +58,8 @@ class FetchCommand extends Command
         $http = new Client();
         $response = $http->get(env('CRAWLER_URL') . '/?url=' . $url);
         $json = $response->getJson();
+
+        $page = $this->Pages->newEntity($json);
+        $this->Pages->save($page);
     }
 }
