@@ -59,7 +59,9 @@ class FetchCommand extends Command
         $response = $http->get(env('CRAWLER_URL') . '/?url=' . $url);
         $json = $response->getJson();
 
-        $page = $this->Pages->newEntity($json);
+        $page = $this->Pages->newEntity($json, [
+            'associated' => ['ConsoleLogs', 'Redirects']
+        ]);
         $this->Pages->save($page);
     }
 }

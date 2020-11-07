@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Pages Model
  *
+ * @property \App\Model\Table\ConsoleLogsTable&\Cake\ORM\Association\HasMany $ConsoleLogs
+ *
  * @method \App\Model\Entity\Page newEmptyEntity()
  * @method \App\Model\Entity\Page newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Page[] newEntities(array $data, array $options = [])
@@ -40,8 +42,17 @@ class PagesTable extends Table
         parent::initialize($config);
 
         $this->setTable('pages');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('ConsoleLogs', [
+            'foreignKey' => 'page_id',
+        ]);
+        $this->hasMany('Redirects', [
+            'foreignKey' => 'page_id',
+        ]);
     }
 
     /**
@@ -55,8 +66,7 @@ class PagesTable extends Table
         $validator
             ->scalar('id')
             ->maxLength('id', 255)
-            ->requirePresence('id', 'create')
-            ->notEmptyString('id');
+            ->allowEmptyString('id', null, 'create');
 
         $validator
             ->scalar('html')

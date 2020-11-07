@@ -6,16 +6,19 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Page Entity
+ * ConsoleLog Entity
  *
- * @property string $id
- * @property string $html
- * @property string $screenshot
+ * @property int $id
+ * @property string $page_id
+ * @property string $level
+ * @property string $message
+ * @property int|null $line_number
+ * @property int|null $column_number
  * @property \Cake\I18n\FrozenTime $created
  *
- * @property \App\Model\Entity\ConsoleLog[] $console_logs
+ * @property \App\Model\Entity\Page $page
  */
-class Page extends Entity
+class ConsoleLog extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -27,11 +30,12 @@ class Page extends Entity
      * @var array
      */
     protected $_accessible = [
-        'id' => true,
-        'html' => true,
-        'screenshot' => true,
+        'page_id' => true,
+        'level' => true,
+        'message' => true,
+        'line_number' => true,
+        'column_number' => true,
         'created' => true,
-        'console_logs' => true,
-        'redirects' => true,
+        'page' => true,
     ];
 }

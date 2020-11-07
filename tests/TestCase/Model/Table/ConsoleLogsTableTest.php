@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\PagesTable;
+use App\Model\Table\ConsoleLogsTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\PagesTable Test Case
+ * App\Model\Table\ConsoleLogsTable Test Case
  */
-class PagesTableTest extends TestCase
+class ConsoleLogsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\PagesTable
+     * @var \App\Model\Table\ConsoleLogsTable
      */
-    protected $Pages;
+    protected $ConsoleLogs;
 
     /**
      * Fixtures
@@ -24,8 +24,8 @@ class PagesTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.Pages',
         'app.ConsoleLogs',
+        'app.Pages',
     ];
 
     /**
@@ -36,8 +36,8 @@ class PagesTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Pages') ? [] : ['className' => PagesTable::class];
-        $this->Pages = $this->getTableLocator()->get('Pages', $config);
+        $config = $this->getTableLocator()->exists('ConsoleLogs') ? [] : ['className' => ConsoleLogsTable::class];
+        $this->ConsoleLogs = $this->getTableLocator()->get('ConsoleLogs', $config);
     }
 
     /**
@@ -47,7 +47,7 @@ class PagesTableTest extends TestCase
      */
     public function tearDown(): void
     {
-        unset($this->Pages);
+        unset($this->ConsoleLogs);
 
         parent::tearDown();
     }
@@ -58,6 +58,16 @@ class PagesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

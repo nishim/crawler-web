@@ -6,16 +6,16 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Page Entity
+ * Redirect Entity
  *
- * @property string $id
- * @property string $html
- * @property string $screenshot
+ * @property int $id
+ * @property string $page_id
+ * @property string $url
  * @property \Cake\I18n\FrozenTime $created
  *
- * @property \App\Model\Entity\ConsoleLog[] $console_logs
+ * @property \App\Model\Entity\Page $page
  */
-class Page extends Entity
+class Redirect extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -27,11 +27,9 @@ class Page extends Entity
      * @var array
      */
     protected $_accessible = [
-        'id' => true,
-        'html' => true,
-        'screenshot' => true,
+        'page_id' => true,
+        'url' => true,
         'created' => true,
-        'console_logs' => true,
-        'redirects' => true,
+        'page' => true,
     ];
 }
