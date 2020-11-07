@@ -24,8 +24,8 @@ class RedirectsTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.Redirects',
         'app.Pages',
+        'app.Redirects',
     ];
 
     /**

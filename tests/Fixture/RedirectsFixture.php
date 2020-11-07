@@ -37,7 +37,7 @@ class RedirectsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'page_id' => 'Lorem ipsum dolor sit amet',
+                'page_id' => 'aeb12a37-b8e2-4f29-ad93-19b7d5849cc3',
                 'url' => 'Lorem ipsum dolor sit amet',
                 'created' => 1604735377,
             ],

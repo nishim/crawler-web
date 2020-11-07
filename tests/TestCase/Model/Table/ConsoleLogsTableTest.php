@@ -24,8 +24,8 @@ class ConsoleLogsTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.ConsoleLogs',
         'app.Pages',
+        'app.ConsoleLogs',
     ];
 
     /**
