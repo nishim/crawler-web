@@ -17,6 +17,12 @@ class FetchCommandTest extends TestCase
 {
     use ConsoleIntegrationTestTrait;
 
+    protected $fixtures = [
+        'app.Pages',
+        'app.ConsoleLogs',
+        'app.Redirects',
+    ];
+
     /**
      * setUp method
      *
