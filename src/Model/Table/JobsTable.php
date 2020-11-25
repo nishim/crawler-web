@@ -109,7 +109,6 @@ class JobsTable extends Table
             'parameters' => $parameters,
         ]);
         if ($job->hasErrors()) {
-            var_dump($job->getErrors());
             return false;
         }
         return !($this->save($job) === false);
@@ -122,7 +121,15 @@ class JobsTable extends Table
      */
     public function dequeue(): ?Job
     {
-        return null;
+        $job = $this->find('all')->where(['status' => 'waiting'])->orderAsc('created')->limit(1)->first();
+        if (empty($job)) {
+            return null;
+        }
+        $job->dequeue();
+        $this->save($job);
+
+
+        return $this->get($job->id);
     }
 
     public function beforeMarshal(Event $event, \ArrayObject $data, \ArrayObject $options)

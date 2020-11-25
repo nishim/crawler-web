@@ -27,10 +27,21 @@ class Job extends Entity
      * @var array
      */
     protected $_accessible = [
+        'id' => true,
         'command' => true,
         'parameters' => true,
         'status' => true,
         'created' => true,
         'executed' => true,
     ];
+
+    /**
+     * dequeue.
+     *
+     * @return void
+     */
+    public function dequeue(): void
+    {
+        $this->status = 'running';
+    }
 }

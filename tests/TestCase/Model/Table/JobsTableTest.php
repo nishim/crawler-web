@@ -71,4 +71,19 @@ class JobsTableTest extends TestCase
         $this->assertEquals(['http://example.com'], $job->parameters);
         $this->assertEquals('waiting', $job->status);
     }
+
+    /** @test */
+    public function デキュー(): void
+    {
+        $ret = $this->Jobs->enqueue('fetch', ['http://example.com']);
+        $job = $this->Jobs->dequeue();
+        $this->assertEquals('fetch', $job->command);
+        $this->assertEquals(['http://example.com'], $job->parameters);
+        $this->assertEquals('running', $job->status);
+
+        var_dump($job);
+
+        $job = $this->Jobs->dequeue();
+        $this->assertNull($job);
+    }
 }
