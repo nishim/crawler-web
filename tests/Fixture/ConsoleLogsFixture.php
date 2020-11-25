@@ -37,17 +37,6 @@ class ConsoleLogsFixture extends TestFixture
      */
     public function init(): void
     {
-        $this->records = [
-            [
-                'id' => 1,
-                'page_id' => 'Lorem ipsum dolor sit amet',
-                'level' => 'Lorem ipsum dolor sit amet',
-                'message' => 'Lorem ipsum dolor sit amet',
-                'line_number' => 1,
-                'column_number' => 1,
-                'created' => 1604731964,
-            ],
-        ];
         parent::init();
     }
 }
